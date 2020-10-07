@@ -27,7 +27,8 @@ namespace ThreadTest2
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            getText();
+            Thread thread = new Thread(getText);
+            
         }
     }
 }
