@@ -15,7 +15,7 @@ namespace ThreadTest2
         public void getText() {
             for (int i = 0; i < 10; i++)
             {
-                textBox1.Text += "1";
+                textBox1.Text += "1 ";
                 Thread.Sleep(2000);
             }
             
