@@ -36,7 +36,33 @@ namespace ThreadTest2
 
         private void buttonProgressStart_Click(object sender, EventArgs e)
         {
+            _worker = new Worker();
+            _worker.ProcessChanged += _worker_ProcessChanged;
+            _worker.WorkComplite += _worker_WorkComplite;
+            buttonProgressStart.Enabled = false;
+            Invoke
 
+        }
+
+        private void _worker_WorkComplite(bool obj)
+        {
+            Action action = () =>
+            {
+                string message = obj ? "Процесс отменен!" : "Процесс завершен!";
+                MessageBox.Show(message);
+                buttonProgressStart.Enabled = true;
+            };
+            Invoke(action);
+            
+        }
+
+        private void _worker_ProcessChanged(int obj)
+        {
+            Action action = () =>
+            {
+                progressBar1.Value = obj;
+            };
+            Invoke(action);
         }
 
         private void buttonProgresStop_Click(object sender, EventArgs e)
