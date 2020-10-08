@@ -20,12 +20,9 @@ namespace ThreadTest2
                 textBox1.Text += "1 ";
                 Thread.Sleep(2000);
             }
+            
         }
-
-        public void funk()
-        {
-            BeginInvoke(new MyDelegate(getText));
-        }
+      
 
         public Form1()
         {
@@ -34,9 +31,23 @@ namespace ThreadTest2
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(funk);
-            thread.Start();
-            
+            /*new Thread(() => 
+            {
+                Invoke((MethodInvoker)(() =>
+                {
+                    getText();
+                }));
+              
+            }).Start();*/
+            new Thread(() =>
+            {
+                Invoke((Action)(() =>
+                {
+                    getText();
+                }));
+            }).Start();
+
+
         }
     }
 }
