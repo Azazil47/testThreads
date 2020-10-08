@@ -40,7 +40,7 @@ namespace ThreadTest2
             _worker.ProcessChanged += _worker_ProcessChanged;
             _worker.WorkComplite += _worker_WorkComplite;
             buttonProgressStart.Enabled = false;
-            Invoke
+            
 
         }
 
@@ -60,6 +60,7 @@ namespace ThreadTest2
         {
             Action action = () =>
             {
+                progressBar1.Value = obj + 1;
                 progressBar1.Value = obj;
             };
             Invoke(action);
@@ -67,7 +68,7 @@ namespace ThreadTest2
 
         private void buttonProgresStop_Click(object sender, EventArgs e)
         {
-
+            _worker.Cancel();
         }
     }
 }

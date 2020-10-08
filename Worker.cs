@@ -17,13 +17,13 @@ namespace ThreadTest2
 
         public void Work()
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 100; i++)
             {
                 if (_cancelled)
                 {
                     break;
                 }
-                Thread.Sleep(20);
+                Thread.Sleep(50);
                 ProcessChanged(i);
             }
             WorkComplite(_cancelled);
