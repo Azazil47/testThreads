@@ -12,9 +12,7 @@ namespace ThreadTest2
 {
     public partial class Form1 : Form
     {
-        public delegate void MyDelegate();
-        public void getText()
-        {
+        public void getText() {
             for (int i = 0; i < 10; i++)
             {
                 textBox1.Text += "1 ";
@@ -22,8 +20,6 @@ namespace ThreadTest2
             }
             
         }
-      
-
         public Form1()
         {
             InitializeComponent();
@@ -31,23 +27,8 @@ namespace ThreadTest2
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            /*new Thread(() => 
-            {
-                Invoke((MethodInvoker)(() =>
-                {
-                    getText();
-                }));
-              
-            }).Start();*/
-            new Thread(() =>
-            {
-                Invoke((Action)(() =>
-                {
-                    getText();
-                }));
-            }).Start();
-
-
+            Thread thread = new Thread(getText);
+            
         }
     }
 }
